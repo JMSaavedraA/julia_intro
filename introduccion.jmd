@@ -1,0 +1,348 @@
+---
+title : Introducción a Julia
+date : 27 de enero de 2023
+---
+
+Para instalación en Ubuntu, ver [Instalación en Ubuntu](https://ferrolho.github.io/blog/2019-01-26/how-to-install-julia-on-ubuntu)
+
+# Variables y operaciones
+
+## Tipos de variables
+
+Iniciamos definiendo variables, por ejemplo:
+
+```julia
+alpha=3;
+a::Int8=3;
+beta=5.0;
+type='c';
+tipo="c";
+```
+
+Veamos que tipo de variable creamos con este 
+
+```julia
+typeof(alpha)
+```
+```julia
+typeof(a)
+```
+```julia
+typeof(beta)
+```
+```julia
+typeof(type)
+```
+```julia
+typeof(tipo)
+```
+```julia
+typeof(a+alpha)
+```
+```julia
+typeof(a+beta)
+```
+```julia
+typeof(a+Int8(beta))
+```
+
+En Julia existen tipos de variables abstractos que incluyen al resto de tipos de variables:
+
+```julia
+abstract type Number end
+abstract type Real          <: Number end
+abstract type AbstractFloat <: Real end
+abstract type Integer       <: Real end
+abstract type Signed        <: Integer end
+abstract type Unsigned      <: Integer end
+```
+
+Podemos definir nuestros propios tipos de variable abstractos:
+
+```julia
+IntOrString = Union{Int,AbstractString}
+```
+
+ver más sobre operaciones en tipos de variables en [Types](https://docs.julialang.org/en/v1/manual/types/)
+
+## Input/Output
+
+Para imprimir en la linea de comandos, se utilizan las funciones:
+
+```julia
+print("Hola\n")
+println("Hola")
+printstyled("Hola\n";color=:red)
+```
+
+Mientras que para leer, los comandos son `readline()` y `readlines()` para leer múltiples líneas, para terminar input de `readlines()` utilizar Ctrl+D.
+
+## Operaciones básicas
+
+Las operaciones básicas en Julia son:
+
+```julia
+x = 4;
+y = 3;
+x + y
+```
+```julia
+x - y
+```
+```julia
+x * y
+```
+```julia
+x / y
+```
+```julia
+x ÷ y #División truncada
+```
+```julia
+x \ y
+```
+```julia
+x ^ y
+```
+```julia
+x % y #Residuo
+```
+
+## Operaciones Booleanas
+
+Las variables también pueden ser Booleanas:
+
+```julia
+z=false
+v=true
+!z
+```
+```julia
+z && v
+```
+```julia
+z || v
+```
+
+Las operaciones de comparación son:
+
+```julia
+x==y
+```
+```julia
+x!=y
+```
+```julia
+x==Float64(x)
+```
+```julia
+x<y
+```
+```julia
+y<x<2y
+```
+```julia
+x<=y
+```
+```julia
+x>y
+```
+```julia
+x>=y
+```
+```julia
+isequal(x,y)
+```
+```julia
+isfinite(x)
+```
+```julia
+isinf(x)
+```
+```julia
+isnan(x)
+```
+
+# Statements
+
+## Condicional
+
+Un ejemplo de un bloque condicional `if`
+
+```julia
+if x > y
+    println("x es mayor que y")
+elseif x < y
+    println("x es menor que y")
+else
+    println("x es igual a y")
+end
+```
+
+## Ciclos
+
+En Julia hay distintos tipos de ciclos:
+
+```julia
+for i = 1:5
+    println(i)
+end
+
+i
+```
+
+```julia
+i = 1;
+
+while i <= 5
+    println(i)
+    global i += 1
+end
+```
+
+```julia
+for i = 10:15
+    println(i)
+end
+
+i
+```
+
+## Funciones
+
+Para definir una función (o un procedimiento) utilizamos `function`
+
+```julia
+function fun2(x)
+    y=2-log(x)/x;
+    return y
+end
+```
+
+Podemos volver a definir esta función con diferentes argumentos, por ejemplo:
+
+```julia
+function fun2(x::Number)
+    y=2-log(x)/x;
+    return y
+end
+
+
+function fun2(x::Number,y::AbstractFloat)
+    y=2-log(x)/x;
+end
+```
+
+También podemos vectorizar funciones con el `.` entre la función y el valor donde se evalúa, por ejemplo:
+
+```julia
+function fun2(x::AbstractVector)
+    y= 2 .- log.(x)./x;
+    return y
+end
+```
+
+Para acceder a alguna entrada de un vector, podemos utilizar `[ ]`, por ejemplo
+
+```julia
+function fun3d(x::Number)
+    y=zeros(Float64,3)
+    y[1]=2-log(x)/x;
+    y[2]=sinpi(x)/x
+    y[3]=exp(-x^2)
+    return y
+end
+```
+
+También podemos definir funciones en linea, por ejemplo
+
+```julia
+f(x) = 2x
+```
+
+# Paquetes
+
+En Julia se importan paquetes (librerias) con la instrucción `using`
+
+```julia
+using Pkg
+```
+
+O en la linea de comando de julia, con la tecla `]` se accede al administrador de paquetes
+
+La mayoría de los paquetes disponibles para Julia están disponibles en GitHub y pueden instalarse utilizando la instrucción:
+
+```julia
+Pkg.add("Plots")
+```
+
+Para usar paquetes personalizadas, podemos utilizar la instrucción:
+
+```julia
+include("Solvers.jl");
+```
+
+
+
+Para actualizar, se puede utilizar 
+
+```julia
+Pkg.update()
+```
+
+# Objetos de alto nivel
+
+En Julia es posible trabajar con Arrays n-dimensionales utilizando la función `Array{T, n}(undef,d_1, ..., d_n)`, por ejemplo un array 3-dimensional:
+
+```julia
+A=Array{Float64,3}(undef,2,2,2)
+```
+
+El caso particular de n=1 y n=2 son distinguidos por `vector` y `matrix`:
+
+```julia
+M = Matrix{Float64}(undef,2,2)
+v = Vector{Float64}(undef,2)
+```
+
+Existen Arrays importantes que pueden definirse con funciones, por ejemplo `zeros`, `ones`, `BitArray`, `trues`, `falses`, `fill`, `similar`, `UniformScaling`, etc.
+
+Las funciones basicas para Arrays se pueden consultar en la [Documentación de Arrays](https://docs.julialang.org/en/v1/base/arrays/).
+
+```julia
+A,m,n = leerMatriz("A.txt")
+b = leerVector("b.txt")
+using LinearAlgebra
+u = A \ b
+```
+
+Para leer archivos CSV, se utilizan las librerías `CSV` y `DataFrames`:
+
+```julia
+using CSV
+using DataFrames
+df = DataFrame(CSV.File("ford_escort.csv"))
+```
+
+Para crear estructuras personalizadas, ver el Capítulo 4
+
+Para crear macros, ver Capítulo 6. Utilizar macros es fácil, se debe importar la libreria donde esté el macro, por ejemplo
+
+```julia
+using Base.Threads
+t=zeros(Int8,10)
+@threads for i = 1:10
+          t[i] = Threads.threadid()
+       end
+```
+
+Ver [Documentación de Threads](https://docs.julialang.org/en/v1/manual/multi-threading/) para ver las características disponibles de multi-threading
+
+Librerías útiles:
+[Loop Vectorization](https://github.com/JuliaSIMD/LoopVectorization.jl)
+[Plots](https://docs.juliaplots.org/stable/)
+[Markdown](https://docs.julialang.org/en/v1/stdlib/Markdown/)
+[LaTeXStrings](https://github.com/stevengj/LaTeXStrings.jl)
+[Printf](https://docs.julialang.org/en/v1/stdlib/Printf/)
+[BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl)
+[Tips para buen rendimiento](https://docs.julialang.org/en/v1/manual/performance-tips/)
