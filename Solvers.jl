@@ -1,6 +1,7 @@
 using DelimitedFiles
 using Printf
 
+
 function resuelveDiagonal(Aaux::AbstractMatrix,baux::AbstractVector,m::Int)
     x=zeros(Float64,m)
     for i in 1:m
