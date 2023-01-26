@@ -325,7 +325,7 @@ df = DataFrame(CSV.File("ford_escort.csv"))
 
 # Otros
 
-Para referencia, se sugiere ver la [Documentación Oficial](https://docs.julialang.org/en/v1/), o algún libro, por ejemplo @Lobianco2019 . Así mismo, se sugiere revisar el foro oficial [Julia Discourse](https://discourse.julialang.org/).
+Para referencia, se sugiere ver la [Documentación Oficial](https://docs.julialang.org/en/v1/), o algún libro, por ejemplo Lobianco. Así mismo, se sugiere revisar el foro oficial [Julia Discourse](https://discourse.julialang.org/).
 
 Para ejecutar Julia en múltiples hilos, ver la [Documentación de Threads](https://docs.julialang.org/en/v1/manual/multi-threading/).
 
