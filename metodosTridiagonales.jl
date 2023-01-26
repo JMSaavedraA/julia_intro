@@ -370,3 +370,33 @@ function LDUpentadiagonal(A::AbstractMatrix,m::Int)
     L[m,3]=A[m,3]-L[m,1]*L[m-2,3]*L[m-2,5] - L[m,2]*L[m-1,3]*L[m-1,4]
     return L
 end
+
+
+function resuelveCholeskyTridiagonal(Aaux::AbstractMatrix,baux::AbstractVector,m::Int)
+    L=CholeskyLDLTridiagonal(Aaux,m)
+    d=zeros(Float64,m)
+    for i=1:m
+        d[i]=L[i,2]
+        L[i,2]=1.0
+    end
+    y=resuelveTridiagonalInferior(L,baux,m)
+    for i=1:m
+        y[i]=y[i]/d[i]
+    end
+    x=resuelveTridiagonalSuperior(L,y,m)
+    return x
+end
+
+function resuelveCholeskyTridiagonal(Aaux::AbstractMatrix,baux::AbstractVector,m::Int,x::AbstractVector)
+    L=CholeskyLDLTridiagonal(Aaux,m)
+    d=zeros(Float64,m)
+    for i=1:m
+        d[i]=L[i,2]
+        L[i,2]=1.0
+    end
+    y=resuelveTridiagonalInferior(L,baux,m)
+    for i=1:m
+        y[i]=y[i]/d[i]
+    end
+    resuelveTridiagonalSuperior(L,y,m,x)
+end

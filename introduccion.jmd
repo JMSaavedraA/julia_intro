@@ -1,6 +1,7 @@
 ---
 title : Introducción a Julia
 date : 27 de enero de 2023
+bibliography: biblio.bib
 ---
 
 Para instalación en Ubuntu, ver [Instalación en Ubuntu](https://ferrolho.github.io/blog/2019-01-26/how-to-install-julia-on-ubuntu)
@@ -282,8 +283,6 @@ Para usar paquetes personalizadas, podemos utilizar la instrucción:
 include("Solvers.jl");
 ```
 
-
-
 Para actualizar, se puede utilizar 
 
 ```julia
@@ -324,25 +323,22 @@ using DataFrames
 df = DataFrame(CSV.File("ford_escort.csv"))
 ```
 
-Para crear estructuras personalizadas, ver el Capítulo 4
+# Otros
 
-Para crear macros, ver Capítulo 6. Utilizar macros es fácil, se debe importar la libreria donde esté el macro, por ejemplo
+Para referencia, se sugiere ver la [Documentación Oficial](https://docs.julialang.org/en/v1/), o algún libro, por ejemplo @Lobianco2019 . Así mismo, se sugiere revisar el foro oficial [Julia Discourse](https://discourse.julialang.org/).
 
-```julia
-using Base.Threads
-t=zeros(Int8,10)
-@threads for i = 1:10
-          t[i] = Threads.threadid()
-       end
-```
+Para ejecutar Julia en múltiples hilos, ver la [Documentación de Threads](https://docs.julialang.org/en/v1/manual/multi-threading/).
 
-Ver [Documentación de Threads](https://docs.julialang.org/en/v1/manual/multi-threading/) para ver las características disponibles de multi-threading
+Para computo distribuido, ver la [Documentación de Distributed](https://docs.julialang.org/en/v1/manual/distributed-computing/)
 
-Librerías útiles:
+Algunas librerías útiles:
+
 [Loop Vectorization](https://github.com/JuliaSIMD/LoopVectorization.jl)
-[Plots](https://docs.juliaplots.org/stable/)
+
 [Markdown](https://docs.julialang.org/en/v1/stdlib/Markdown/)
-[LaTeXStrings](https://github.com/stevengj/LaTeXStrings.jl)
-[Printf](https://docs.julialang.org/en/v1/stdlib/Printf/)
+
+[Weave](https://github.com/JunoLab/Weave.jl)
+
 [BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl)
+
 [Tips para buen rendimiento](https://docs.julialang.org/en/v1/manual/performance-tips/)

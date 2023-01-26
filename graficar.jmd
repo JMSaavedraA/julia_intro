@@ -1,0 +1,64 @@
+---
+title : Introducción a Julia
+date : 27 de enero de 2023
+bibliography: biblio.bib
+---
+
+# Gráficas en Julia
+
+Graficar en Julia es fácil si utilizamos la librería Plots. Si `y=f.(x)` para un vector `x`, `plot(x,y)` grafica la serie. Incluso, podemos graficar (x,f(x)) sin definir y con `plot(x,f(x))`, por ejemplo:
+
+```julia
+using Plots
+include("ejemplo1.jl")
+
+plot(x,sinpi.(x))
+```
+
+Para combinar varias gráficas, utilizamos `!` al final de la instrucción:
+
+```julia
+plt1=scatter(x,y); plot!(z,[fz fz1 fz2 fz3])
+```
+
+Para mejorar las gráficas, es posible elegir la paleta de color utilizando la opción `color_palette`, únicamente el de los puntos con `seriescolor`, dar etiquetas a las series con `label`, cambiar el ancho de línea con `lw`, el tamaño de la imágen con `size` y la posición de las etiquetas con `legend`. Con LaTeXStrings además podemos darle formato de LaTeX a las etiquetas.
+
+```julia
+using LaTeXStrings
+scatter(x,y,seriescolor=:Blues,label=L"(x_k,y_k)");
+plot!(z,[fz fz1 fz2 fz3],lw = 3,color_palette=:seaborn_bright6, label=[L"\sin(\pi x)" L"\lambda=0.5" L"\lambda=1.5" L"\lambda=3.5"],size=(800,600),legend=:bottomright)
+```
+
+Podemos guardar las gráficas utilizando el comando `savefig`, por ejemplo:
+
+```julia
+using Printf
+include("ejemplo2.jl")
+plt1=histogram(estimador,normalize = :probability,bins=:sturges,label=L"\hat{x}",size=(1600,1200),legend=:topright,palette=:Oranges_3); plot!(U.x,pdf.(Normal(mean(estimador), sqrt(var(estimador))),U.x),lw=5,label="Densidad Normal");plot!(U.x,U.density,lw=5,label="Estimación por Kernel Normal");
+savefig(plt1,@sprintf("histograma-%i.png",n)) #Guardamos la gráfica
+```
+
+Ahora, haremos un GIF a partir de sucesiones `X`, `Y` y `Z` tales que `X[i]=X(t_i)`.
+
+```{julia;echo=false}
+include("problemaSitnikov.jl")
+#Límites de los ejes para la animación
+X=R.*cos.(theta)
+Y=R.*sin.(theta)
+xlim=(-1,1)
+ylim=(-1,1)
+zlim=extrema(Z)
+```
+
+```julia
+#creamos la animación
+anim = @animate for i=2:n
+    inicio=maximum([1,i-10])
+    @views x1, y1, z1 = X[inicio:i], Y[inicio:i], Z[inicio:i].*0
+    @views x2, y2, z2 = -X[inicio:i], -Y[inicio:i], Z[inicio:i].*0
+    @views x3, y3, z3 = X[i:i]*0, Y[i:i]*0, Z[i:i]
+    line=range(0, 10, length = i-inicio+1)
+    A = plot(x1, y1, z1; label=L"q_1(t)", lw=line, xlim, ylim, zlim, camera=(36, 30),size=(800,600));plot!(x2, y2, z2; label=L"q_2(t)", lw=line, xlim, ylim, zlim, camera=(36, 30)); plot!(x3, y3, z3; label=L"z(t)", lw=0.3, xlim, ylim, zlim, camera=(36, 30),markersize = 2, seriestype=:scatter,markerstrokewidth=1)
+end
+gif(anim, @sprintf("sitnikov%f.gif",z0),fps=30)
+```

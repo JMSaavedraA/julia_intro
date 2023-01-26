@@ -990,7 +990,7 @@ false
 
 
 <pre class='hljl'>
-<span class='hljl-n'>y</span><span class='hljl-oB'>&lt;</span><span class='hljl-n'>x</span><span class='hljl-oB'>&lt;</span><span class='hljl-ni'>2</span><span class='hljl-n'>x</span>
+<span class='hljl-n'>y</span><span class='hljl-oB'>&lt;</span><span class='hljl-n'>x</span><span class='hljl-oB'>&lt;</span><span class='hljl-ni'>2</span><span class='hljl-n'>y</span>
 </pre>
 
 
@@ -1300,12 +1300,12 @@ f &#40;generic function with 1 method&#41;
 <pre class="output">
 2×2×2 Array&#123;Float64, 3&#125;:
 &#91;:, :, 1&#93; &#61;
- 6.93824e-310  6.93824e-310
- 6.93824e-310  6.9383e-310
+ -5.963e-306    5.0e-324
+  1.61306e-112  1.43335e-311
 
 &#91;:, :, 2&#93; &#61;
- 6.9383e-310     5.0e-324
- 6.93831e-310  NaN
+ 6.20198e223   5.0e-324
+ 4.25821e-149  1.43281e-311
 </pre>
 
 
@@ -1320,8 +1320,8 @@ f &#40;generic function with 1 method&#41;
 
 <pre class="output">
 2-element Vector&#123;Float64&#125;:
- 6.93831219425143e-310
- 6.9383121945534e-310
+ 0.0
+ 6.9527158470435e-310
 </pre>
 
 
@@ -1339,26 +1339,26 @@ f &#40;generic function with 1 method&#41;
 
 <pre class="output">
 5000-element Vector&#123;Float64&#125;:
-   5.000000000004077
- -10.000000000007919
-   6.9999999999839515
-   5.000000000018573
-  -8.99999999999889
-  10.00000000000761
-  -3.9999999999771685
-   1.0000000000123979
-   9.99999999999945
-  -5.999999999998529
-   ⋮
-   7.9999999999920846
-   0.9999999999924511
-  -9.99999999999258
-   8.00000000001307
-   1.0000000000296105
-   1.9999999999754832
-  -4.99999999999813
-   9.000000000009836
-   7.999999999979857
+  4.999999999976671
+ -9.999999999975989
+  7.000000000048893
+  4.999999999977083
+ -8.99999999997035
+  9.999999999991786
+ -4.000000000046342
+  0.9999999999709263
+ 10.000000000000046
+ -5.999999999995383
+  ⋮
+  8.000000000036154
+  1.0000000000151277
+ -9.999999999994756
+  7.999999999956809
+  0.999999999882705
+  2.000000000110669
+ -5.000000000001566
+  8.999999999940046
+  8.000000000068312
 </pre>
 
 
@@ -1375,22 +1375,16 @@ f &#40;generic function with 1 method&#41;
 
 <div><div style = "float: left;"><span>23×3 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">Year</th><th style = "text-align: left;">Mileage (thousands)</th><th style = "text-align: left;">Price</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Int64" style = "text-align: left;">Int64</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: right;">1998</td><td style = "text-align: right;">27</td><td style = "text-align: right;">9991</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">17</td><td style = "text-align: right;">9925</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: right;">1998</td><td style = "text-align: right;">28</td><td style = "text-align: right;">10491</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">4</td><td style = "text-align: right;">1998</td><td style = "text-align: right;">5</td><td style = "text-align: right;">10990</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">5</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">38</td><td style = "text-align: right;">9493</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">6</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">36</td><td style = "text-align: right;">9991</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">7</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">24</td><td style = "text-align: right;">10490</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">8</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">37</td><td style = "text-align: right;">9491</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">9</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">38</td><td style = "text-align: right;">9491</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">10</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">30</td><td style = "text-align: right;">9990</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">11</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">38</td><td style = "text-align: right;">9491</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">12</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">25</td><td style = "text-align: right;">9990</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">13</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">39</td><td style = "text-align: right;">9990</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">14</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">22</td><td style = "text-align: right;">9390</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">15</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">24</td><td style = "text-align: right;">9990</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">16</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">37</td><td style = "text-align: right;">9990</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">17</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">29</td><td style = "text-align: right;">9990</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">18</td><td style = "text-align: right;">1997</td><td style = "text-align: right;">70</td><td style = "text-align: right;">8990</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">19</td><td style = "text-align: right;">1996</td><td style = "text-align: right;">29</td><td style = "text-align: right;">7990</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">20</td><td style = "text-align: right;">1995</td><td style = "text-align: right;">72</td><td style = "text-align: right;">5994</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">21</td><td style = "text-align: right;">1993</td><td style = "text-align: right;">72</td><td style = "text-align: right;">5994</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">22</td><td style = "text-align: right;">1994</td><td style = "text-align: right;">61</td><td style = "text-align: right;">5500</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">23</td><td style = "text-align: right;">1998</td><td style = "text-align: right;">7</td><td style = "text-align: right;">11000</td></tr></tbody></table></div>
 
-<p>Para crear estructuras personalizadas, ver el Capítulo 4</p>
-<p>Para crear macros, ver Capítulo 6. Utilizar macros es fácil, se debe importar la libreria donde esté el macro, por ejemplo</p>
-
-
-<pre class='hljl'>
-<span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>Base</span><span class='hljl-oB'>.</span><span class='hljl-n'>Threads</span><span class='hljl-t'>
-</span><span class='hljl-n'>t</span><span class='hljl-oB'>=</span><span class='hljl-nf'>zeros</span><span class='hljl-p'>(</span><span class='hljl-n'>Int8</span><span class='hljl-p'>,</span><span class='hljl-ni'>10</span><span class='hljl-p'>)</span><span class='hljl-t'>
-</span><span class='hljl-nd'>@threads</span><span class='hljl-t'> </span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-ni'>10</span><span class='hljl-t'>
-          </span><span class='hljl-n'>t</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>Threads</span><span class='hljl-oB'>.</span><span class='hljl-nf'>threadid</span><span class='hljl-p'>()</span><span class='hljl-t'>
-       </span><span class='hljl-k'>end</span>
-</pre>
-
-
-
-<p>Ver <a href="https://docs.julialang.org/en/v1/manual/multi-threading/">Documentación de Threads</a> para ver las características disponibles de multi-threading</p>
-<p>Librerías útiles: <a href="https://github.com/JuliaSIMD/LoopVectorization.jl">Loop Vectorization</a> <a href="https://docs.juliaplots.org/stable/">Plots</a> <a href="https://docs.julialang.org/en/v1/stdlib/Markdown/">Markdown</a> <a href="https://github.com/stevengj/LaTeXStrings.jl">LaTeXStrings</a> <a href="https://docs.julialang.org/en/v1/stdlib/Printf/">Printf</a> <a href="https://github.com/JuliaCI/BenchmarkTools.jl">BenchmarkTools</a> <a href="https://docs.julialang.org/en/v1/manual/performance-tips/">Tips para buen rendimiento</a></p>
+<h1>Otros</h1>
+<p>Para referencia, se sugiere ver la <a href="https://docs.julialang.org/en/v1/">Documentación Oficial</a>, o algún libro, por ejemplo @Lobianco2019 . Así mismo, se sugiere revisar el foro oficial <a href="https://discourse.julialang.org/">Julia Discourse</a>.</p>
+<p>Para ejecutar Julia en múltiples hilos, ver la <a href="https://docs.julialang.org/en/v1/manual/multi-threading/">Documentación de Threads</a>.</p>
+<p>Para computo distribuido, ver la <a href="https://docs.julialang.org/en/v1/manual/distributed-computing/">Documentación de Distributed</a></p>
+<p>Algunas librerías útiles:</p>
+<p><a href="https://github.com/JuliaSIMD/LoopVectorization.jl">Loop Vectorization</a></p>
+<p><a href="https://docs.julialang.org/en/v1/stdlib/Markdown/">Markdown</a></p>
+<p><a href="https://github.com/JunoLab/Weave.jl">Weave</a></p>
+<p><a href="https://github.com/JuliaCI/BenchmarkTools.jl">BenchmarkTools</a></p>
+<p><a href="https://docs.julialang.org/en/v1/manual/performance-tips/">Tips para buen rendimiento</a></p>
 
 
         <HR/>
