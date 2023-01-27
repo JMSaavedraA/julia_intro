@@ -674,7 +674,7 @@ div.title {text-align: center;}
 
 
 
-<p>Veamos que tipo de variable creamos con este </p>
+<p>Veamos que tipo de variable creamos con este</p>
 
 
 <pre class='hljl'>
@@ -768,7 +768,7 @@ Int8
 
 
 <pre class='hljl'>
-<span class='hljl-k'>abstract type</span><span class='hljl-t'> </span><span class='hljl-n'>Number</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-t'>
+<span class='hljl-k'>abstract type</span><span class='hljl-t'> </span><span class='hljl-n'>Number</span><span class='hljl-t'>        </span><span class='hljl-oB'>&lt;:</span><span class='hljl-t'> </span><span class='hljl-n'>Any</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-t'>
 </span><span class='hljl-k'>abstract type</span><span class='hljl-t'> </span><span class='hljl-n'>Real</span><span class='hljl-t'>          </span><span class='hljl-oB'>&lt;:</span><span class='hljl-t'> </span><span class='hljl-n'>Number</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-t'>
 </span><span class='hljl-k'>abstract type</span><span class='hljl-t'> </span><span class='hljl-n'>AbstractFloat</span><span class='hljl-t'> </span><span class='hljl-oB'>&lt;:</span><span class='hljl-t'> </span><span class='hljl-n'>Real</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-t'>
 </span><span class='hljl-k'>abstract type</span><span class='hljl-t'> </span><span class='hljl-n'>Integer</span><span class='hljl-t'>       </span><span class='hljl-oB'>&lt;:</span><span class='hljl-t'> </span><span class='hljl-n'>Real</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-t'>
@@ -778,20 +778,7 @@ Int8
 
 
 
-<p>Podemos definir nuestros propios tipos de variable abstractos:</p>
-
-
-<pre class='hljl'>
-<span class='hljl-n'>IntOrString</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Union</span><span class='hljl-p'>{</span><span class='hljl-n'>Int</span><span class='hljl-p'>,</span><span class='hljl-n'>AbstractString</span><span class='hljl-p'>}</span>
-</pre>
-
-
-<pre class="output">
-Union&#123;Int64, AbstractString&#125;
-</pre>
-
-
-<p>ver más sobre operaciones en tipos de variables en <a href="https://docs.julialang.org/en/v1/manual/types/">Types</a></p>
+<p>Ver más sobre operaciones en tipos de variables en <a href="https://docs.julialang.org/en/v1/manual/types/">Types</a></p>
 <h2>Input/Output</h2>
 <p>Para imprimir en la linea de comandos, se utilizan las funciones:</p>
 
@@ -862,7 +849,7 @@ Hola
 
 
 <pre class='hljl'>
-<span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-oB'>÷</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-cs'>#División truncada</span>
+<span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-oB'>÷</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-cs'>#División truncada con \div+&lt;tab&gt;</span>
 </pre>
 
 
@@ -1170,7 +1157,7 @@ ERROR: UndefVarError: i not defined
 
 <pre class='hljl'>
 <span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>fun2</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-t'>
-    </span><span class='hljl-n'>y</span><span class='hljl-oB'>=</span><span class='hljl-ni'>2</span><span class='hljl-oB'>-</span><span class='hljl-nf'>log</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-oB'>/</span><span class='hljl-n'>x</span><span class='hljl-p'>;</span><span class='hljl-t'>
+    </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'> </span><span class='hljl-oB'>-</span><span class='hljl-t'> </span><span class='hljl-nf'>log</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>/</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'>
     </span><span class='hljl-k'>return</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'>
 </span><span class='hljl-k'>end</span>
 </pre>
@@ -1186,13 +1173,13 @@ fun2 &#40;generic function with 1 method&#41;
 
 <pre class='hljl'>
 <span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>fun2</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-oB'>::</span><span class='hljl-n'>Number</span><span class='hljl-p'>)</span><span class='hljl-t'>
-    </span><span class='hljl-n'>y</span><span class='hljl-oB'>=</span><span class='hljl-ni'>2</span><span class='hljl-oB'>-</span><span class='hljl-nf'>log</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-oB'>/</span><span class='hljl-n'>x</span><span class='hljl-p'>;</span><span class='hljl-t'>
+    </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'> </span><span class='hljl-oB'>-</span><span class='hljl-t'> </span><span class='hljl-nf'>log</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>/</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'>
     </span><span class='hljl-k'>return</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'>
 </span><span class='hljl-k'>end</span><span class='hljl-t'>
 
 
 </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>fun2</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-oB'>::</span><span class='hljl-n'>Number</span><span class='hljl-p'>,</span><span class='hljl-n'>y</span><span class='hljl-oB'>::</span><span class='hljl-n'>AbstractFloat</span><span class='hljl-p'>)</span><span class='hljl-t'>
-    </span><span class='hljl-n'>y</span><span class='hljl-oB'>=</span><span class='hljl-ni'>2</span><span class='hljl-oB'>-</span><span class='hljl-nf'>log</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-oB'>/</span><span class='hljl-n'>x</span><span class='hljl-p'>;</span><span class='hljl-t'>
+    </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'> </span><span class='hljl-oB'>-</span><span class='hljl-t'> </span><span class='hljl-nf'>log</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>/</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-cs'># return implícito</span><span class='hljl-t'>
 </span><span class='hljl-k'>end</span>
 </pre>
 
@@ -1207,7 +1194,7 @@ fun2 &#40;generic function with 3 methods&#41;
 
 <pre class='hljl'>
 <span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>fun2</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-oB'>::</span><span class='hljl-n'>AbstractVector</span><span class='hljl-p'>)</span><span class='hljl-t'>
-    </span><span class='hljl-n'>y</span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'> </span><span class='hljl-oB'>.-</span><span class='hljl-t'> </span><span class='hljl-n'>log</span><span class='hljl-oB'>.</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-oB'>./</span><span class='hljl-n'>x</span><span class='hljl-p'>;</span><span class='hljl-t'>
+    </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'> </span><span class='hljl-oB'>.-</span><span class='hljl-t'> </span><span class='hljl-n'>log</span><span class='hljl-oB'>.</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>./</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'>
     </span><span class='hljl-k'>return</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'>
 </span><span class='hljl-k'>end</span>
 </pre>
@@ -1223,11 +1210,11 @@ fun2 &#40;generic function with 4 methods&#41;
 
 <pre class='hljl'>
 <span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>fun3d</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-oB'>::</span><span class='hljl-n'>Number</span><span class='hljl-p'>)</span><span class='hljl-t'>
-    </span><span class='hljl-n'>y</span><span class='hljl-oB'>=</span><span class='hljl-nf'>zeros</span><span class='hljl-p'>(</span><span class='hljl-n'>Float64</span><span class='hljl-p'>,</span><span class='hljl-ni'>3</span><span class='hljl-p'>)</span><span class='hljl-t'>
-    </span><span class='hljl-n'>y</span><span class='hljl-p'>[</span><span class='hljl-ni'>1</span><span class='hljl-p'>]</span><span class='hljl-oB'>=</span><span class='hljl-ni'>2</span><span class='hljl-oB'>-</span><span class='hljl-nf'>log</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-oB'>/</span><span class='hljl-n'>x</span><span class='hljl-p'>;</span><span class='hljl-t'>
-    </span><span class='hljl-n'>y</span><span class='hljl-p'>[</span><span class='hljl-ni'>2</span><span class='hljl-p'>]</span><span class='hljl-oB'>=</span><span class='hljl-nf'>sinpi</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-oB'>/</span><span class='hljl-n'>x</span><span class='hljl-t'>
-    </span><span class='hljl-n'>y</span><span class='hljl-p'>[</span><span class='hljl-ni'>3</span><span class='hljl-p'>]</span><span class='hljl-oB'>=</span><span class='hljl-nf'>exp</span><span class='hljl-p'>(</span><span class='hljl-oB'>-</span><span class='hljl-n'>x</span><span class='hljl-oB'>^</span><span class='hljl-ni'>2</span><span class='hljl-p'>)</span><span class='hljl-t'>
-    </span><span class='hljl-k'>return</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'>
+    </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>zeros</span><span class='hljl-p'>(</span><span class='hljl-n'>Float64</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>y</span><span class='hljl-p'>[</span><span class='hljl-ni'>1</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'> </span><span class='hljl-oB'>-</span><span class='hljl-t'> </span><span class='hljl-nf'>log</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>/</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-p'>;</span><span class='hljl-t'>
+    </span><span class='hljl-n'>y</span><span class='hljl-p'>[</span><span class='hljl-ni'>2</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>sinpi</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>/</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'>
+    </span><span class='hljl-n'>y</span><span class='hljl-p'>[</span><span class='hljl-ni'>3</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>exp</span><span class='hljl-p'>(</span><span class='hljl-oB'>-</span><span class='hljl-n'>x</span><span class='hljl-oB'>^</span><span class='hljl-ni'>2</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>return</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-cs'># para regresar y, en vez de y[3]</span><span class='hljl-t'>
 </span><span class='hljl-k'>end</span>
 </pre>
 
@@ -1251,7 +1238,7 @@ f &#40;generic function with 1 method&#41;
 
 
 <h1>Paquetes</h1>
-<p>En Julia se importan paquetes &#40;librerias&#41; con la instrucción <code>using</code></p>
+<p>En Julia se importan paquetes &#40;librerías&#41; con la instrucción <code>using</code></p>
 
 
 <pre class='hljl'>
@@ -1265,7 +1252,8 @@ f &#40;generic function with 1 method&#41;
 
 
 <pre class='hljl'>
-<span class='hljl-n'>Pkg</span><span class='hljl-oB'>.</span><span class='hljl-nf'>add</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Plots&quot;</span><span class='hljl-p'>)</span>
+<span class='hljl-n'>Pkg</span><span class='hljl-oB'>.</span><span class='hljl-nf'>activate</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;.&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-n'>Pkg</span><span class='hljl-oB'>.</span><span class='hljl-nf'>add</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Plots&quot;</span><span class='hljl-p'>)</span>
 </pre>
 
 
@@ -1279,7 +1267,7 @@ f &#40;generic function with 1 method&#41;
 
 
 
-<p>Para actualizar, se puede utilizar </p>
+<p>Para actualizar, se puede utilizar</p>
 
 
 <pre class='hljl'>
@@ -1289,85 +1277,218 @@ f &#40;generic function with 1 method&#41;
 
 
 <h1>Objetos de alto nivel</h1>
-<p>En Julia es posible trabajar con Arrays n-dimensionales utilizando la función <code>Array&#123;T, n&#125;&#40;undef,d_1, ..., d_n&#41;</code>, por ejemplo un array 3-dimensional:</p>
+<h2>Arrays, vectores y matrices</h2>
+<p>En Julia es posible trabajar con Arrays n-dimensionales utilizando las funciones <code>zeros</code>, <code>ones</code>, <code>fill</code> o <code>Array&#123;T, n&#125;&#40;undef, d_1, ..., d_n&#41;</code>, por ejemplo un array 3-dimensional:</p>
 
 
 <pre class='hljl'>
-<span class='hljl-n'>A</span><span class='hljl-oB'>=</span><span class='hljl-nf'>Array</span><span class='hljl-p'>{</span><span class='hljl-n'>Float64</span><span class='hljl-p'>,</span><span class='hljl-ni'>3</span><span class='hljl-p'>}(</span><span class='hljl-n'>undef</span><span class='hljl-p'>,</span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-ni'>2</span><span class='hljl-p'>)</span>
+<span class='hljl-nf'>zeros</span><span class='hljl-p'>(</span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-p'>)</span>
 </pre>
 
 
 <pre class="output">
-2×2×2 Array&#123;Float64, 3&#125;:
-&#91;:, :, 1&#93; &#61;
- -5.963e-306    5.0e-324
-  1.61306e-112  1.23121e-311
-
-&#91;:, :, 2&#93; &#61;
- -4.16527e-123  5.0e-324
- -5.91804e90    1.23122e-311
+2×3 Matrix&#123;Float64&#125;:
+ 0.0  0.0  0.0
+ 0.0  0.0  0.0
 </pre>
 
 
-<p>El caso particular de n&#61;1 y n&#61;2 son distinguidos por <code>vector</code> y <code>matrix</code>:</p>
-
 
 <pre class='hljl'>
-<span class='hljl-n'>M</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Matrix</span><span class='hljl-p'>{</span><span class='hljl-n'>Float64</span><span class='hljl-p'>}(</span><span class='hljl-n'>undef</span><span class='hljl-p'>,</span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-ni'>2</span><span class='hljl-p'>)</span><span class='hljl-t'>
-</span><span class='hljl-n'>v</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Vector</span><span class='hljl-p'>{</span><span class='hljl-n'>Float64</span><span class='hljl-p'>}(</span><span class='hljl-n'>undef</span><span class='hljl-p'>,</span><span class='hljl-ni'>2</span><span class='hljl-p'>)</span>
+<span class='hljl-nf'>ones</span><span class='hljl-p'>(</span><span class='hljl-n'>Int64</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>4</span><span class='hljl-p'>)</span>
 </pre>
 
 
 <pre class="output">
-2-element Vector&#123;Float64&#125;:
- 5.0e-324
- 6.4e-323
+3×4 Matrix&#123;Int64&#125;:
+ 1  1  1  1
+ 1  1  1  1
+ 1  1  1  1
 </pre>
 
 
-<p>Existen Arrays importantes que pueden definirse con funciones, por ejemplo <code>zeros</code>, <code>ones</code>, <code>BitArray</code>, <code>trues</code>, <code>falses</code>, <code>fill</code>, <code>similar</code>, <code>UniformScaling</code>, etc.</p>
-<p>Las funciones basicas para Arrays se pueden consultar en la <a href="https://docs.julialang.org/en/v1/base/arrays/">Documentación de Arrays</a>.</p>
+
+<pre class='hljl'>
+<span class='hljl-nf'>fill</span><span class='hljl-p'>(</span><span class='hljl-n'>π</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>4</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-cs'># valor, d_1, d_2, ..., d_n</span>
+</pre>
+
+
+<pre class="output">
+4×1 Matrix&#123;Irrational&#123;:π&#125;&#125;:
+ π &#61; 3.1415926535897...
+ π &#61; 3.1415926535897...
+ π &#61; 3.1415926535897...
+ π &#61; 3.1415926535897...
+</pre>
+
+
+<p>El caso particular de <code>n&#61;1</code> y <code>n&#61;2</code> son distinguidos por <code>Vector</code> y <code>Matrix</code>:</p>
 
 
 <pre class='hljl'>
-<span class='hljl-n'>A</span><span class='hljl-p'>,</span><span class='hljl-n'>m</span><span class='hljl-p'>,</span><span class='hljl-n'>n</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>leerMatriz</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;A.txt&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+<span class='hljl-n'>M</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Matrix</span><span class='hljl-p'>{</span><span class='hljl-n'>Float64</span><span class='hljl-p'>}(</span><span class='hljl-n'>undef</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-nf'>typeof</span><span class='hljl-p'>(</span><span class='hljl-n'>M</span><span class='hljl-p'>))</span><span class='hljl-t'>
+</span><span class='hljl-n'>v</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Vector</span><span class='hljl-p'>{</span><span class='hljl-n'>Float64</span><span class='hljl-p'>}(</span><span class='hljl-n'>undef</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>100</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-nf'>typeof</span><span class='hljl-p'>(</span><span class='hljl-n'>v</span><span class='hljl-p'>))</span>
+</pre>
+
+
+<pre class="output">
+Matrix&#123;Float64&#125;
+Vector&#123;Float64&#125;
+</pre>
+
+
+<p>Existen otro tipo de Arrays importantes que pueden ser creados con funciones como </p>
+<p>Existen otros tipos de Arrays importantes o útiles que pueden definirse con funciones, por ejemplo <code>BitArray</code>, <code>trues</code>, <code>falses</code>, <code>similar</code>, <code>UniformScaling</code>, entro otros.</p>
+<p>Las funciones básicas para Arrays se pueden consultar en la <a href="https://docs.julialang.org/en/v1/base/arrays/">Documentación de Arrays</a>.</p>
+<p>El indexado de Arrays por default empieza en 1.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>v</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-sc'>&#39;a&#39;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-sc'>&#39;b&#39;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-sc'>&#39;c&#39;</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>v</span><span class='hljl-p'>[</span><span class='hljl-ni'>1</span><span class='hljl-p'>]</span>
+</pre>
+
+
+<pre class="output">
+&#39;a&#39;: ASCII/Unicode U&#43;0061 &#40;category Ll: Letter, lowercase&#41;
+</pre>
+
+
+<p>Uno puede iterar sobre lo elementos de un Array de múltiples formas, por indexado</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-nf'>length</span><span class='hljl-p'>(</span><span class='hljl-n'>v</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-n'>i</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;: &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>v</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>])</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span>
+</pre>
+
+
+<pre class="output">
+1: a
+2: b
+3: c
+</pre>
+
+
+<p>&quot;Deslizando&quot; el vector o array</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>val</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-n'>v</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-n'>val</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span>
+</pre>
+
+
+<pre class="output">
+a
+b
+c
+</pre>
+
+
+<p>O con alguna de las funciones auxiliares que el mismo lenguaje provee</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-nf'>eachindex</span><span class='hljl-p'>(</span><span class='hljl-n'>v</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-n'>i</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;: &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>v</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>])</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span>
+</pre>
+
+
+<pre class="output">
+1: a
+2: b
+3: c
+</pre>
+
+
+
+<pre class='hljl'>
+<span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-p'>(</span><span class='hljl-n'>i</span><span class='hljl-p'>,</span><span class='hljl-n'>val</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-nf'>enumerate</span><span class='hljl-p'>(</span><span class='hljl-n'>v</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-n'>i</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;: &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>val</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span>
+</pre>
+
+
+<pre class="output">
+1: a
+2: b
+3: c
+</pre>
+
+
+
+<pre class='hljl'>
+<span class='hljl-n'>M</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>reshape</span><span class='hljl-p'>(</span><span class='hljl-nf'>collect</span><span class='hljl-p'>(</span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-ni'>6</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>c</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-nf'>eachcol</span><span class='hljl-p'>(</span><span class='hljl-n'>M</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@show</span><span class='hljl-t'> </span><span class='hljl-n'>c</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>r</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-nf'>eachrow</span><span class='hljl-p'>(</span><span class='hljl-n'>M</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@show</span><span class='hljl-t'> </span><span class='hljl-n'>r</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span>
+</pre>
+
+
+<pre class="output">
+c &#61; &#91;1, 2&#93;
+c &#61; &#91;3, 4&#93;
+c &#61; &#91;5, 6&#93;
+r &#61; &#91;1, 3, 5&#93;
+r &#61; &#91;2, 4, 6&#93;
+</pre>
+
+
+<h2>Algebra lineal</h2>
+<p>Julia incluye en su librería estándar un paquete para algebra lineal</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>A</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>m</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>n</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>leerMatriz</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;A.txt&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
 </span><span class='hljl-n'>b</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>leerVector</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;b.txt&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
 </span><span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>LinearAlgebra</span><span class='hljl-t'>
-</span><span class='hljl-n'>u</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>A</span><span class='hljl-t'> </span><span class='hljl-oB'>\</span><span class='hljl-t'> </span><span class='hljl-n'>b</span>
+</span><span class='hljl-n'>u</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>A</span><span class='hljl-t'> </span><span class='hljl-oB'>\</span><span class='hljl-t'> </span><span class='hljl-n'>b</span><span class='hljl-t'> </span><span class='hljl-cs'># equivalente, matemáticamente, a inv(A) * b</span>
 </pre>
 
 
 <pre class="output">
 5000-element Vector&#123;Float64&#125;:
-  4.999999999976671
- -9.999999999975989
-  7.000000000048893
-  4.999999999977083
- -8.99999999997035
-  9.999999999991786
- -4.000000000046342
-  0.9999999999709263
- 10.000000000000046
- -5.999999999995383
+  4.999999999975762
+ -9.999999999984418
+  7.000000000045843
+  4.999999999987462
+ -8.999999999967105
+  9.999999999994463
+ -4.000000000037724
+  0.9999999999772213
+  9.999999999995808
+ -5.999999999991629
   ⋮
-  8.000000000036154
-  1.0000000000151277
- -9.999999999994756
-  7.999999999956809
-  0.999999999882705
-  2.000000000110669
- -5.000000000001566
-  8.999999999940046
-  8.000000000068312
+  8.000000000029885
+  1.0000000000069469
+ -9.999999999984878
+  7.999999999956093
+  0.9999999999062342
+  2.0000000000941722
+ -4.999999999997766
+  8.999999999947681
+  8.000000000057593
 </pre>
 
 
+<h1>Lectura de Datos</h1>
 <p>Para leer archivos CSV, se utilizan las librerías <code>CSV</code> y <code>DataFrames</code>:</p>
 
 
 <pre class='hljl'>
 <span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>CSV</span><span class='hljl-t'>
 </span><span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>DataFrames</span><span class='hljl-t'>
+
 </span><span class='hljl-n'>df</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>DataFrame</span><span class='hljl-p'>(</span><span class='hljl-n'>CSV</span><span class='hljl-oB'>.</span><span class='hljl-nf'>File</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;ford_escort.csv&quot;</span><span class='hljl-p'>))</span>
 </pre>
 
@@ -1391,7 +1512,7 @@ f &#40;generic function with 1 method&#41;
         <div class="footer">
           <p>
             Published from <a href="introduccion.jmd">introduccion.jmd</a>
-            using <a href="http://github.com/JunoLab/Weave.jl">Weave.jl</a> v0.10.9 on 2023-01-25.
+            using <a href="http://github.com/JunoLab/Weave.jl">Weave.jl</a> v0.10.9 on 2023-01-27.
           </p>
         </div>
       </div>

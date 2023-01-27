@@ -317,38 +317,38 @@ Las funciones básicas para Arrays se pueden consultar en la [Documentación de 
 
 El indexado de Arrays por default empieza en 1.
 
-```
-a = ['a', 'b', 'c']
-a[1]
+```julia
+v = ['a', 'b', 'c']
+v[1]
 ```
 
 Uno puede iterar sobre lo elementos de un Array de múltiples formas, por indexado
 
 ```julia
-for i = 1:length(a)
-    println(i, ": ", a[i])
+for i = 1:length(v)
+    println(i, ": ", v[i])
 end
 ```
 
 "Deslizando" el vector o array
 
 ```julia
-for v in a
-    println(v)
+for val in v
+    println(val)
 end
 ```
 
 O con alguna de las funciones auxiliares que el mismo lenguaje provee
 
 ```julia
-for i in eachindex(a)
-    println(i, ": ", a[i])
+for i in eachindex(v)
+    println(i, ": ", v[i])
 end
 ```
 
 ```julia
-for (i,v) in enumerate(a)
-    println(i, ": ", v)
+for (i,val) in enumerate(v)
+    println(i, ": ", val)
 end
 ```
 
