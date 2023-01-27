@@ -20,7 +20,7 @@ type='c';
 tipo="c";
 ```
 
-Veamos que tipo de variable creamos con este 
+Veamos que tipo de variable creamos con este
 
 ```julia
 typeof(alpha)
@@ -50,7 +50,7 @@ typeof(a+Int8(beta))
 En Julia existen tipos de variables abstractos que incluyen al resto de tipos de variables:
 
 ```julia
-abstract type Number end
+abstract type Number        <: Any end
 abstract type Real          <: Number end
 abstract type AbstractFloat <: Real end
 abstract type Integer       <: Real end
@@ -58,13 +58,7 @@ abstract type Signed        <: Integer end
 abstract type Unsigned      <: Integer end
 ```
 
-Podemos definir nuestros propios tipos de variable abstractos:
-
-```julia
-IntOrString = Union{Int,AbstractString}
-```
-
-ver más sobre operaciones en tipos de variables en [Types](https://docs.julialang.org/en/v1/manual/types/)
+Ver más sobre operaciones en tipos de variables en [Types](https://docs.julialang.org/en/v1/manual/types/)
 
 ## Input/Output
 
@@ -97,7 +91,7 @@ x * y
 x / y
 ```
 ```julia
-x ÷ y #División truncada
+x ÷ y #División truncada con \div+<tab>
 ```
 ```julia
 x \ y
@@ -215,7 +209,7 @@ Para definir una función (o un procedimiento) utilizamos `function`
 
 ```julia
 function fun2(x)
-    y=2-log(x)/x;
+    y = 2 - log(x) / x
     return y
 end
 ```
@@ -224,13 +218,13 @@ Podemos volver a definir esta función con diferentes argumentos, por ejemplo:
 
 ```julia
 function fun2(x::Number)
-    y=2-log(x)/x;
+    y = 2 - log(x) / x
     return y
 end
 
 
 function fun2(x::Number,y::AbstractFloat)
-    y=2-log(x)/x;
+    y = 2 - log(x) / x # return implícito
 end
 ```
 
@@ -238,7 +232,7 @@ También podemos vectorizar funciones con el `.` entre la función y el valor do
 
 ```julia
 function fun2(x::AbstractVector)
-    y= 2 .- log.(x)./x;
+    y = 2 .- log.(x) ./ x
     return y
 end
 ```
@@ -247,11 +241,11 @@ Para acceder a alguna entrada de un vector, podemos utilizar `[ ]`, por ejemplo
 
 ```julia
 function fun3d(x::Number)
-    y=zeros(Float64,3)
-    y[1]=2-log(x)/x;
-    y[2]=sinpi(x)/x
-    y[3]=exp(-x^2)
-    return y
+    y = zeros(Float64, 3)
+    y[1] = 2 - log(x) / x;
+    y[2] = sinpi(x) / x
+    y[3] = exp(-x^2)
+    return y # para regresar y, en vez de y[3]
 end
 ```
 
@@ -263,7 +257,7 @@ f(x) = 2x
 
 # Paquetes
 
-En Julia se importan paquetes (librerias) con la instrucción `using`
+En Julia se importan paquetes (librerías) con la instrucción `using`
 
 ```julia
 using Pkg
@@ -274,6 +268,7 @@ O en la linea de comando de julia, con la tecla `]` se accede al administrador d
 La mayoría de los paquetes disponibles para Julia están disponibles en GitHub y pueden instalarse utilizando la instrucción:
 
 ```julia
+Pkg.activate(".")
 Pkg.add("Plots")
 ```
 
@@ -283,7 +278,7 @@ Para usar paquetes personalizadas, podemos utilizar la instrucción:
 include("Solvers.jl");
 ```
 
-Para actualizar, se puede utilizar 
+Para actualizar, se puede utilizar
 
 ```julia
 Pkg.update()
@@ -291,35 +286,102 @@ Pkg.update()
 
 # Objetos de alto nivel
 
-En Julia es posible trabajar con Arrays n-dimensionales utilizando la función `Array{T, n}(undef,d_1, ..., d_n)`, por ejemplo un array 3-dimensional:
+## Arrays, vectores y matrices
+
+En Julia es posible trabajar con Arrays n-dimensionales utilizando las funciones `zeros`, `ones`, `fill` o `Array{T, n}(undef, d_1, ..., d_n)`, por ejemplo un array 3-dimensional:
 
 ```julia
-A=Array{Float64,3}(undef,2,2,2)
+zeros(2, 3)
+```
+```julia
+ones(Int64, 3, 4)
+```
+```julia
+fill(π, 4, 1) # valor, d_1, d_2, ..., d_n
 ```
 
-El caso particular de n=1 y n=2 son distinguidos por `vector` y `matrix`:
+El caso particular de `n=1` y `n=2` son distinguidos por `Vector` y `Matrix`:
 
 ```julia
-M = Matrix{Float64}(undef,2,2)
-v = Vector{Float64}(undef,2)
+M = Matrix{Float64}(undef, 2, 2)
+println(typeof(M))
+v = Vector{Float64}(undef, 100)
+println(typeof(v))
 ```
 
-Existen Arrays importantes que pueden definirse con funciones, por ejemplo `zeros`, `ones`, `BitArray`, `trues`, `falses`, `fill`, `similar`, `UniformScaling`, etc.
+Existen otro tipo de Arrays importantes que pueden ser creados con funciones como 
 
-Las funciones basicas para Arrays se pueden consultar en la [Documentación de Arrays](https://docs.julialang.org/en/v1/base/arrays/).
+Existen otros tipos de Arrays importantes o útiles que pueden definirse con funciones, por ejemplo `BitArray`, `trues`, `falses`, `similar`, `UniformScaling`, entro otros.
+
+Las funciones básicas para Arrays se pueden consultar en la [Documentación de Arrays](https://docs.julialang.org/en/v1/base/arrays/).
+
+El indexado de Arrays por default empieza en 1.
+
+```
+a = ['a', 'b', 'c']
+a[1]
+```
+
+Uno puede iterar sobre lo elementos de un Array de múltiples formas, por indexado
 
 ```julia
-A,m,n = leerMatriz("A.txt")
+for i = 1:length(a)
+    println(i, ": ", a[i])
+end
+```
+
+"Deslizando" el vector o array
+
+```julia
+for v in a
+    println(v)
+end
+```
+
+O con alguna de las funciones auxiliares que el mismo lenguaje provee
+
+```julia
+for i in eachindex(a)
+    println(i, ": ", a[i])
+end
+```
+
+```julia
+for (i,v) in enumerate(a)
+    println(i, ": ", v)
+end
+```
+
+```julia
+M = reshape(collect(1:6), 2, 3)
+for c in eachcol(M)
+    @show c
+end
+for r in eachrow(M)
+    @show r
+end
+```
+
+## Algebra lineal
+
+Julia incluye en su librería estándar un paquete para algebra lineal
+
+```julia
+A, m, n = leerMatriz("A.txt")
 b = leerVector("b.txt")
+
 using LinearAlgebra
-u = A \ b
+u = A \ b # equivalente, matemáticamente, a inv(A) * b
 ```
+
+# Lectura de Datos
 
 Para leer archivos CSV, se utilizan las librerías `CSV` y `DataFrames`:
 
 ```julia
 using CSV
 using DataFrames
+
 df = DataFrame(CSV.File("ford_escort.csv"))
 ```
 
